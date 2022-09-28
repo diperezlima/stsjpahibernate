@@ -12,13 +12,13 @@ import com.panzaprende.cursojava.entities.Category;
 import com.panzaprende.cursojava.entities.Order;
 import com.panzaprende.cursojava.entities.OrderItem;
 import com.panzaprende.cursojava.entities.Payment;
-import com.panzaprende.cursojava.entities.Person;
+import com.panzaprende.cursojava.entities.User;
 import com.panzaprende.cursojava.entities.Product;
 import com.panzaprende.cursojava.entities.enums.OrderStatus;
 import com.panzaprende.cursojava.repositories.CategoryRepository;
 import com.panzaprende.cursojava.repositories.OrderItemRepository;
 import com.panzaprende.cursojava.repositories.OrderRepository;
-import com.panzaprende.cursojava.repositories.PersonRepository;
+import com.panzaprende.cursojava.repositories.UserRepository;
 import com.panzaprende.cursojava.repositories.ProductRepository;
 
 @Configuration
@@ -26,7 +26,7 @@ import com.panzaprende.cursojava.repositories.ProductRepository;
 public class TestConfig implements CommandLineRunner {
 	
 	@Autowired
-	private PersonRepository personRepository;
+	private UserRepository userRepository;
 	
 	@Autowired
 	private OrderRepository orderRepository;
@@ -42,10 +42,10 @@ public class TestConfig implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Person u1 = new Person(null, "Maria Brown", "maria@gmail.com", "988888888", "123456");
-		Person u2 = new Person(null, "Alex Green", "alex@gmail.com", "977777777", "123456");
+		User u1 = new User(null, "Maria Brown", "maria@gmail.com", "988888888", "123456");
+		User u2 = new User(null, "Alex Green", "alex@gmail.com", "977777777", "123456");
 		
-		personRepository.saveAll(Arrays.asList(u1, u2));
+		userRepository.saveAll(Arrays.asList(u1, u2));
 		
 		Order o1 = new Order(null, Instant.parse("2019-06-20T19:53:07Z"), OrderStatus.PAID, u1);
 		Order o2 = new Order(null, Instant.parse("2019-07-21T03:42:10Z"), OrderStatus.WAITING_PAYMENT, u2);

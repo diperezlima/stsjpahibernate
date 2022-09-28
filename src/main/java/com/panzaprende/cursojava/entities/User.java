@@ -15,8 +15,8 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "tb_person")
-public class Person implements Serializable { // had to rename to Person instead of User to avoid exceptions
+@Table(name = "tb_users")
+public class User implements Serializable { // had to rename to User instead of User to avoid exceptions
 
 	private static final long serialVersionUID = 1L;
 	
@@ -32,11 +32,11 @@ public class Person implements Serializable { // had to rename to Person instead
 	@OneToMany(mappedBy = "client")
 	private List<Order> orders = new ArrayList<>();
 	
-	public Person() {
+	public User() {
 		
 	}
 
-	public Person(Long id, String name, String email, String phone, String password) {
+	public User(Long id, String name, String email, String phone, String password) {
 		this.id = id;
 		this.name = name;
 		this.email = email;
@@ -101,7 +101,7 @@ public class Person implements Serializable { // had to rename to Person instead
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Person other = (Person) obj;
+		User other = (User) obj;
 		return Objects.equals(id, other.id);
 	}
 	
